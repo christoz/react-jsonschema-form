@@ -1005,7 +1005,7 @@ export function toIdSchema(
   if ("items" in schema && !schema.items.$ref) {
     return toIdSchema(schema.items, id, rootSchema, formData, idPrefix);
   }
-  if (schema.type !== "object") {
+  if (schema.type !== "object" && !schema.properties) {
     return idSchema;
   }
   for (const name in schema.properties || {}) {
